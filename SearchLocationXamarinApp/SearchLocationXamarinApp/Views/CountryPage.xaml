@@ -1,0 +1,59 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" 
+             xmlns:autocomplete="clr-namespace:Syncfusion.SfAutoComplete.XForms;assembly=Syncfusion.SfAutoComplete.XForms" 
+             xmlns:behaviorsPack="clr-namespace:Xamarin.Forms.BehaviorsPack;assembly=Xamarin.Forms.BehaviorsPack" 
+             x:Class="SearchLocationXamarinApp.CountryPage"
+             xmlns:res="clr-namespace:SearchLocationXamarinApp.Resources"
+             xmlns:CountryDetail="clr-namespace:SearchLocationXamarinApp.Views"
+             NavigationPage.HasNavigationBar="False">
+
+    <StackLayout>
+        <autocomplete:SfAutoComplete Style="{StaticResource SearchStyle}"
+                                     DataSource="{Binding Countries}"
+                                     Watermark="{x:Static res:CountryResource.SearchControlText}"
+                                     DisplayMemberPath="Country_name">
+            <autocomplete:SfAutoComplete.Behaviors>
+                <behaviorsPack:EventToCommandBehavior EventName="SelectionChanged"
+                                                      Command="{Binding SearchCommand}"
+                                                      EventArgsPropertyPath="Value"/>
+            </autocomplete:SfAutoComplete.Behaviors>
+        </autocomplete:SfAutoComplete>
+
+        <StackLayout IsVisible="{Binding IsBusy}"
+                     VerticalOptions="CenterAndExpand">
+            <ActivityIndicator Style="{StaticResource ActivityIndicatorStyle}" 
+                               IsRunning="{Binding IsBusy}"/>
+
+            <Label Text="{x:Static res:CountryResource.LoadingText}"
+                   FontSize="Large"
+                   HorizontalOptions="CenterAndExpand"></Label>
+        </StackLayout>
+
+        <ListView
+            x:Name="CountriesList"
+            Style="{StaticResource ListViewStyle}"
+            IsVisible="{Binding IsVisibleListView}"
+            ItemsSource="{Binding Countries}">
+            <ListView.ItemTemplate>
+                <DataTemplate>
+                    <ViewCell Appearing="ViewCell_Appearing" >
+                        <CountryDetail:CountryDetailPage Country_name="{Binding Country_name}"
+                                                         Capital="{Binding Capital}"
+                                                         Region="{Binding Region}"></CountryDetail:CountryDetailPage>
+
+                    </ViewCell>
+                </DataTemplate>
+            </ListView.ItemTemplate>
+        </ListView>
+
+        <StackLayout Style="{StaticResource StackLayoutProcessStyle}"
+                     IsVisible ="{Binding IsBusy}">
+
+            <Label Text="{Binding ProcessLabel}"
+                   FontSize="Small"></Label>
+            <ProgressBar Progress="{Binding ProgressValue}"
+                         ProgressColor="#FF6B42"/>
+        </StackLayout>
+    </StackLayout>
+</ContentPage>
