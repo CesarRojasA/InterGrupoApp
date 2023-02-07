@@ -1,0 +1,26 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<ContentView xmlns="http://xamarin.com/schemas/2014/forms" 
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="SearchLocApp.Views.CountryDetailPage"
+             xmlns:res="clr-namespace:SearchLocApp.Resources">
+  <ContentView.Content>
+        <Frame Style="{StaticResource FrameStyle}" >
+            <StackLayout Orientation="Horizontal" x:Name="Item" >
+                <Button 
+                    Text="{x:Static res:CountryResource.ButtonGo}" 
+                    CommandParameter="{Binding Source={x:Reference Item}, Path=BindingContext}" 
+                    Command="{Binding GoMapCommand}"
+                    Style="{StaticResource ButtonStyle}"></Button>
+                <StackLayout    VerticalOptions="Center">
+                    <Label Text="{Binding Country_name}"
+                                               FontAttributes="Bold"
+                                               FontSize="Large" ></Label>
+                    <Label Text="{Binding Capital}"
+                                               FontSize="Medium"></Label>
+                    <Label Text="{Binding Region}"
+                                               FontSize="Large"></Label>
+                </StackLayout>
+            </StackLayout>
+        </Frame>
+    </ContentView.Content>
+</ContentView>

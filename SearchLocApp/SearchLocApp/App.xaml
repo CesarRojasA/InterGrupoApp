@@ -1,0 +1,50 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<Application xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:autocomplete="clr-namespace:Syncfusion.SfAutoComplete.XForms;assembly=Syncfusion.SfAutoComplete.XForms" 
+             x:Class="SearchLocApp.App">
+    <Application.Resources>
+        <Style TargetType="autocomplete:SfAutoComplete" x:Key="SearchStyle">
+            <Setter Property="HeightRequest" Value="60"/>
+            <Setter Property="TextSize" Value="23"/>
+            <Setter Property="DropDownTextSize" Value="23"/>
+            <Setter Property="BorderColor" Value="#FFB5A5"/>
+            <Setter Property="DropDownTextColor" Value="#FFB5A5"/>
+            <Setter Property="WatermarkColor" Value="#FFB5A5"/>
+            <Setter Property="ClearButtonColor" Value="#FFB5A5"/>
+            <Setter Property="Margin" Value="15"/>
+        </Style>
+        <Style TargetType="ListView" x:Key="ListViewStyle">
+            <Setter Property="SeparatorVisibility" Value="Default"/>
+            <Setter Property="RowHeight" Value="150"/>
+            <Setter Property="SelectionMode" Value="None"/>
+        </Style>
+        <Style TargetType="Frame" x:Key="FrameStyle">
+            <Setter Property="CornerRadius" Value="5"/>
+            <Setter Property="Margin" Value="10,5"/>
+            <Setter Property="HasShadow" Value="True"/>
+            <Setter Property="BackgroundColor" Value="#FFF4F1"/>
+        </Style>
+        <Style TargetType="Button" x:Key="ButtonStyle">
+            <Setter Property="BackgroundColor" Value="#FFB5A5"/>
+            <Setter Property="CornerRadius" Value="10"/>
+            <Setter Property="FontSize" Value="Large"/>
+            <Setter Property="TextColor" Value="White"/>
+            <Setter Property="HeightRequest" Value="100"/>
+            <Setter Property="Margin" Value="10,0"/>
+            <Setter Property="HorizontalOptions" Value="Center"/>
+            <Setter Property="VerticalOptions" Value="Center"/>
+        </Style>
+        <Style TargetType="ActivityIndicator" x:Key="ActivityIndicatorStyle">   
+            <Setter Property="VerticalOptions" Value="CenterAndExpand"/>
+            <Setter Property="HeightRequest" Value="100"/>
+            <Setter Property="Color" Value="#FF6B42"/>
+        </Style>
+        <Style TargetType="StackLayout" x:Key="StackLayoutProcessStyle">
+            <Setter Property="Spacing" Value="5"/>
+            <Setter Property="Margin" Value="15"/>
+            <Setter Property="HeightRequest" Value="30"/>
+            <Setter Property="VerticalOptions" Value="EndAndExpand"/>
+        </Style>
+    </Application.Resources>
+</Application>
